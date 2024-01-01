@@ -2,8 +2,6 @@
 based on the choice, give the player/computer a point, do while <3 game points, first player to reach 3
 points wins the game.*/
 
-let playerPoints = 0;
-let computerPoints = 0;
 
 function getComputerChoice(){
     const computerChoices = ["rock", "paper", "scissors"]
@@ -13,20 +11,18 @@ function getComputerChoice(){
 };
 
 
-function getPlayerChoice(){
-    //Eventlistener to get the choice
-};
+function compareChoices(user) {
+    // Logic behind deciding which choice won and giving points 
+    console.log(user);
+}; 
 
-function compareChoices(){
-    //Logic behind deciding which choice won and point giving 
-};
+document.addEventListener('DOMContentLoaded', function() {
+    const rockBtn = document.getElementById("rock");
+    const paperBtn = document.getElementById("paper");
+    const scissorsBtn = document.getElementById("scissors");
 
-while(playerPoints < 3 || computerPoints < 3){
-    //Logic behind calling all the function
-    const playerChoice = getPlayerChoice();
-    const computerChoice = getComputerChoice();
-
-};
-
-
+    rockBtn.addEventListener('click', () => compareChoices(rockBtn.value));
+    paperBtn.addEventListener('click', () => compareChoices(paperBtn.value));
+    scissorsBtn.addEventListener('click', () => compareChoices(scissorsBtn.value));
+});
 
