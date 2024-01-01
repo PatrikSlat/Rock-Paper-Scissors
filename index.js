@@ -3,7 +3,7 @@ based on the choice, give the player/computer a point, do while <3 game points, 
 points wins the game.*/
 
 let playerPoints = 0;
-let computerPoints = 0;
+let computerPoints = 0; 
 
 function getComputerChoice(){
     const computerChoices = ["rock", "paper", "scissors"]
@@ -27,13 +27,45 @@ function compareChoices(user) {
         (userChoice === 'scissors' && computerChoice === 'paper')
     ) {
         output.innerHTML = "You have won !";
+        playerPoints++;
     } else {
         output.innerHTML = "The computer has beat you !";
+        computerPoints++;
     }
+
+    updateScore();
 }
 
+function updateScore(){
+    const userScore = document.getElementById("user-score");
+    const computerScore = document.getElementById("computer-score");
 
-document.addEventListener('DOMContentLoaded', function() {
+    userScore.innerHTML = `You : ${playerPoints} `
+    computerScore.innerHTML = `Computer : ${computerPoints}`
+
+    if (playerPoints === 3 || computerPoints === 3){
+        endGame();
+        console.log("TEST TEST TEST")
+    }
+};
+
+function endGame(){
+    const winnerOutput = document.getElementById("winner-text");
+
+    if (playerPoints > computerPoints) {
+        winnerOutput.innerHTML = "Congratulations! You won the game!";
+    } else if (playerPoints < computerPoints) {
+        winnerOutput.innerHTML = "Sorry! You lost the game!";
+    } else {
+        winnerOutput.innerHTML = "It's a tie game!";
+    }
+
+    playerPoints = 0;
+    computerPoints = 0;
+};
+
+
+function game(){
     const rockBtn = document.getElementById("rock");
     const paperBtn = document.getElementById("paper");
     const scissorsBtn = document.getElementById("scissors");
@@ -41,5 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     rockBtn.addEventListener('click', () => compareChoices(rockBtn.value));
     paperBtn.addEventListener('click', () => compareChoices(paperBtn.value));
     scissorsBtn.addEventListener('click', () => compareChoices(scissorsBtn.value));
-});
+}; 
+
+document.addEventListener("DOMContentLoaded", game);
 
