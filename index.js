@@ -2,6 +2,8 @@
 based on the choice, give the player/computer a point, do while <3 game points, first player to reach 3
 points wins the game.*/
 
+let playerPoints = 0;
+let computerPoints = 0;
 
 function getComputerChoice(){
     const computerChoices = ["rock", "paper", "scissors"]
@@ -13,8 +15,23 @@ function getComputerChoice(){
 
 function compareChoices(user) {
     // Logic behind deciding which choice won and giving points 
-    console.log(user);
-}; 
+    const userChoice = user;
+    const computerChoice = getComputerChoice();
+    const output = document.getElementById("results-text");
+
+    if (userChoice === computerChoice) {
+        output.innerHTML = "It's a tie !";
+    } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        output.innerHTML = "You have won !";
+    } else {
+        output.innerHTML = "The computer has beat you !";
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const rockBtn = document.getElementById("rock");
